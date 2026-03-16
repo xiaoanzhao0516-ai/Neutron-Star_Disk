@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Axisymmetric NS Disk - Visualization Manual Draft</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Axisymmetric NS Disk";
+        var mkdocs_page_input_path = "Section_NS_disk.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Visualization Manual Draft
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Axisymmetric NS Disk</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#plot-components">Plot Components</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#isosurface-opacity-and-density-range-settings">Isosurface, Opacity, and Density Range Settings</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#isosurface-levels">Isosurface Levels</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#opacity-settings">Opacity Settings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#density-range-minmax">Density Range (Min/Max)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Visualization Manual Draft</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Axisymmetric NS Disk</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="case-study-axisymmetric-neutron-star-with-disk">Case Study: Axisymmetric Neutron Star with Disk</h1>
+<p>In this case study we examine the visualization of an axisymmetric neutron star–disk system using VisIt. The purpose of this section is to document the plotting workflow and the visualization settings used to generate reproducible figures. The data used here correspond to initial data of a rotating neutron star surrounded by an accretion disk.</p>
+<p>In this tutorial we primarily demonstrate the procedure using the Anvil GUI, 
+which was the environment I used for this case. Corresponding CLI commands 
+are also provided where applicable.</p>
+<p>The dataset used in this section was loaded from</p>
+<p><code>plot_data_axisym_new_600.h5</code></p>
+<p>(which can be found in my GitHub repository if needed for practice).</p>
+<p><strong>Note:</strong> The codes used to convert spherical COCAL initial data into Cartesian data and HDF5 format can be found on GitHub in<br />
+<code>Illinois-Relativity-Group/COCAL_Cartesian</code>.</p>
+<p>For this system we generate three types of visualizations:</p>
+<ul>
+<li>raw density plots</li>
+<li>normalized density plots (density divided by the maximum value)</li>
+<li>logarithm of the normalized density</li>
+</ul>
+<p>Since the first two types follow very similar procedures, we focus on two representative cases in this section:</p>
+<ul>
+<li>raw density</li>
+<li>logarithm of the normalized density</li>
+</ul>
+<p>The main visualization consists of pseudocolor plots of the disk and neutron star, with isosurface operators applied to highlight their structures.</p>
+<hr />
+<h2 id="plot-components">Plot Components</h2>
+<p>The visualization of this case was constructed using the following VisIt pipeline:</p>
+<ul>
+<li><strong>Pseudocolor</strong> plot of <code>rho_ns</code><br />
+  (or <code>rho_ns_norm</code>, <code>rho_ns_log_norm</code>)</li>
+<li><strong>Pseudocolor</strong> plot of <code>rho_disk</code><br />
+  (or <code>rho_disk_norm</code>, <code>rho_disk_log_norm</code>)</li>
+<li><strong>Isosurface</strong> operator applied to the neutron star pseudocolor plot</li>
+<li><strong>Isosurface</strong> operator applied to the disk pseudocolor plot</li>
+<li><strong>Vector</strong> plot of the neutron star spin</li>
+</ul>
+<p>The initial procedures should be familiar if the previous sections have been read. 
+We therefore proceed directly to the stage where raw isosurface plots are created 
+for both the disk and the neutron star, as shown in the figure below.</p>
+<p><img alt="Initial isosurface" src="../figures/Initial_Isosurface.jpeg" /></p>
+<div style="text-align: center;">
+<p>Figure 1: Raw isosurface visualization of the axisymmetric neutron star–disk system.</p>
+</div>
+
+<p>Before proceeding further, we note a few visualization settings that help improve the clarity of the plots. 
+First, we remove the coordinate axes and bounding boxes so that only the color table remains visible 
+(the color table will also be refined later).</p>
+<p>In the VisIt GUI this can be done by navigating to</p>
+<p><strong>Controls → Annotations</strong></p>
+<p>and disabling the corresponding options</p>
+<p>The corresponding CLI commands are</p>
+<pre><code class="language-python">AnnotationAtts = AnnotationAttributes()
+AnnotationAtts.axes3D.visible = 0
+AnnotationAtts.axes3D.triadFlag = 0
+AnnotationAtts.axes3D.bboxFlag = 0
+AnnotationAtts.userInfoFlag = 0
+AnnotationAtts.databaseInfoFlag = 0
+SetAnnotationAttributes(AnnotationAtts)
+</code></pre>
+<p>Now your plot should look something like this.</p>
+<p>The second thing is to change background color. This can be achieved by </p>
+<p><strong>Controls → Annotations → Colors → Background color</strong>.</p>
+<p>In this example the background color used was 
+<span style="background-color:#bdbca2; padding:3px 10px; border:1px solid #666;">#bdbca2</span>
+for reference.</p>
+<p>The equivalent CLI commands are:</p>
+<pre><code class="language-python">AnnotationAtts = AnnotationAttributes()
+AnnotationAtts.backgroundMode = AnnotationAtts.Solid
+AnnotationAtts.backgroundColor = (189, 188, 162, 255)
+SetAnnotationAttributes(AnnotationAtts)
+</code></pre>
+<p>Then, we need to adjust the view of the plot for clarity.
+On GUI, this can be done by</p>
+<p><strong>Controls → View</strong></p>
+<p>The setting used for the example is shown below. 
+The equivalent CLI commands were:</p>
+<pre><code class="language-python">View3DAtts = View3DAttributes()
+View3DAtts.viewNormal = (2, 10, -5)
+View3DAtts.focus = (300, 300, 300)
+View3DAtts.viewUp = (1, 0, 0)
+View3DAtts.viewAngle = 30
+View3DAtts.parallelScale = 519.615
+View3DAtts.imagePan = (0, 0)
+View3DAtts.imageZoom = 2.8
+View3DAtts.perspective = 1
+SetView3D(View3DAtts)
+</code></pre>
+<p>A more detail explanation of the different parameters can be found on the official tutorial of Vislt: </p>
+<p>https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/using_visit/MakingItPretty/View.html</p>
+<p><img alt="No annotations" src="../figures/view.png" /></p>
+<div style="text-align: center;">
+<p>Figure 2: View Setting.</p>
+</div>
+
+<p>Now your plot should look something like this.</p>
+<p><img alt="No annotations" src="../figures/after_setup.png" /></p>
+<div style="text-align: center;">
+<p>Figure 3: Vislt after setup.</p>
+</div>
+
+<p>After the set up we can get into the main procedure.</p>
+<h2 id="isosurface-opacity-and-density-range-settings">Isosurface, Opacity, and Density Range Settings</h2>
+<p>The first step should be loading up the color tables you will be using for neutron star and disk densities.</p>
+<h3 id="isosurface-levels">Isosurface Levels</h3>
+<p>Then, to better emphasize the structural features of the system, several visualization parameters can be adjusted. </p>
+<p>One of the most important parameters is the <strong>number of isosurface levels</strong>, which controls how many contour shells are rendered.</p>
+<p>In GUI, this can be done by </p>
+<p><strong>Isosurface operator attributes → Select by -- N level --</strong></p>
+<p><img alt="No annotations" src="../figures/iso.jpeg" /></p>
+<div style="text-align: center;">
+<p>Figure 4: GUI Isosurface Level Setting.</p>
+</div>
+
+<p>The settings for CLI used for this example are shown below:</p>
+<pre><code class="language-python">IsosurfaceAtts = IsosurfaceAttributes()
+IsosurfaceAtts.contourNLevels = 50
+IsosurfaceAtts.contourMethod = IsosurfaceAtts.Level
+IsosurfaceAtts.scaling = IsosurfaceAtts.Linear
+SetOperatorOptions(IsosurfaceAtts, 0, 0)
+</code></pre>
+<h3 id="opacity-settings">Opacity Settings</h3>
+<p>The next parameter you wanna play with is the <strong>opacity</strong> setting of the color bar. </p>
+<p>The next parameter that can be adjusted 
+Opacity controls how transparent the rendered surface is, and therefore determines how easily internal structures and overlapping surfaces can be seen.</p>
+<p>In the GUI this can be adjusted through</p>
+<p><strong>Pseudocolor → Opacity</strong></p>
+<p>For this example, a <strong><em>Ramp</em></strong> opacity profile was used with a representative value around <code>22%</code> for neutron star density. 
+For disk density, I used a <strong><em>Constant</em></strong> opacity around <code>11%</code>.</p>
+<h3 id="density-range-minmax">Density Range (Min/Max)</h3>
+<p>Finally, you might wanna play with <strong><em>min</em></strong> and <strong><em>max</em></strong> in <strong>Psudocolor</strong>.</p>
+<p><img alt="No annotations" src="../figures/pesudo.jpeg" /></p>
+<div style="text-align: center;">
+<p>Figure 5: GUI Pseudocolor settings.</p>
+</div>
+
+<p>The equivalent CLI commands for <strong>Pseudocolor</strong> settings of neutron star density are shown below as an example:</p>
+<pre><code class="language-python">PseudocolorAtts = PseudocolorAttributes()
+PseudocolorAtts.minFlag = 1
+PseudocolorAtts.min = 2e-4
+PseudocolorAtts.maxFlag = 1
+PseudocolorAtts.max = 1e-3
+PseudocolorAtts.colorTableName = &quot;ozhao_ns2&quot;
+PseudocolorAtts.invertColorTable = 1
+PseudocolorAtts.opacityType = PseudocolorAtts.Ramp
+PseudocolorAtts.opacity = 0.223529
+SetPlotOptions(PseudocolorAtts)
+</code></pre>
+<p>The equivalent CLI commands for <strong>Pseudocolor</strong> settings of disk density are:</p>
+<pre><code class="language-python">PseudocolorAtts = PseudocolorAttributes()
+PseudocolorAtts.minFlag = 1
+PseudocolorAtts.min = 4e-7
+PseudocolorAtts.maxFlag = 1
+PseudocolorAtts.max = 2e-6
+PseudocolorAtts.colorTableName = &quot;ozhao_disk2&quot;
+PseudocolorAtts.invertColorTable = 1
+PseudocolorAtts.opacityType = PseudocolorAtts.Constant
+PseudocolorAtts.opacity = 0.117647
+SetPlotOptions(PseudocolorAtts) 
+</code></pre>
+<p>Note: the numbers and options I provided are just for references. The exact settings should be experimented with patience.</p>
+<p>Finally, your plot might look something similar to this.</p>
+<p><img alt="No annotations" src="../figures/visit0002.jpeg" /></p>
+<div style="text-align: center;">
+<p>Figure 6: Raw density plot</p>
+</div>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
