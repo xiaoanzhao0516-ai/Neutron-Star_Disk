@@ -123,12 +123,11 @@ A more detail explanation of the different parameters can be found on the offici
 
 https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/using_visit/MakingItPretty/View.html
 
-![No annotations](figures/view.png)
+<img src="figures/view.png" alt="Figure 2: View Setting." width="60%">
 
 <div style="text-align: center;">
 <p>Figure 2: View Setting.</p>
 </div>
-
 
 
 Now your plot should look something like this.
