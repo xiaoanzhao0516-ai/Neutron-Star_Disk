@@ -123,11 +123,11 @@ A more detail explanation of the different parameters can be found on the offici
 
 https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/using_visit/MakingItPretty/View.html
 
-<img src="figures/view.png" alt="Figure 2: View Setting." width="60%">
+<p align="center">
+  <img src="figures/view.png" alt="Figure 2: View Setting." width="40%">
+</p>
 
-<div style="text-align: center;">
-<p>Figure 2: View Setting.</p>
-</div>
+<p align="center"><em>Figure 2: View Setting.</em></p>
 
 
 Now your plot should look something like this.
@@ -155,11 +155,9 @@ In GUI, this can be done by
 
 **Isosurface operator attributes → Select by -- N level --**
 
-
-![No annotations](figures/iso.jpeg)
-
 <div style="text-align: center;">
-<p>Figure 4: GUI Isosurface Level Setting.</p>
+    <img src="figures/iso.jpeg" alt="Figure 4: GUI Isosurface Level Setting." width="45%">
+    <p>Figure 4: GUI Isosurface Level Setting.</p>
 </div>
 
 
@@ -192,10 +190,9 @@ For disk density, I used a ***Constant*** opacity around `11%`.
 Finally, you might wanna play with ***min*** and ***max*** in **Psudocolor**.
 
 
-![No annotations](figures/pesudo.jpeg)
-
 <div style="text-align: center;">
-<p>Figure 5: GUI Pseudocolor settings.</p>
+    <img src="figures/pesudo.jpeg" alt="Figure 5: GUI Pseudocolor settings." width="50%">
+    <p>Figure 5: GUI Pseudocolor settings.</p>
 </div>
 
 
