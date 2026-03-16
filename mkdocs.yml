@@ -1,0 +1,5 @@
+site_name: Visualization Manual Draft
+theme:
+  name: readthedocs
+nav:
+  - Axisymmetric NS Disk: Section_NS_disk.md
