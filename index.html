@@ -3,22 +3,22 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Axisymmetric NS Disk - Visualization Manual Draft</title>
-    <link rel="stylesheet" href="../css/theme.css" />
-    <link rel="stylesheet" href="../css/theme_extra.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Visualization Manual Draft</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Axisymmetric NS Disk";
-        var mkdocs_page_input_path = "Section_NS_disk.md";
+        var mkdocs_page_name = "Case Study: Axisymmetric Neutron Star with Disk";
+        var mkdocs_page_input_path = "index.md";
         var mkdocs_page_url = null;
       </script>
     
     <!--[if lt IE 9]>
-      <script src="../js/html5shiv.min.js"></script>
+      <script src="js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
       <script>hljs.highlightAll();</script> 
@@ -30,31 +30,17 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> Visualization Manual Draft
+          <a href="." class="icon icon-home"> Visualization Manual Draft
         </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Axisymmetric NS Disk</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#plot-components">Plot Components</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#isosurface-opacity-and-density-range-settings">Isosurface, Opacity, and Density Range Settings</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#isosurface-levels">Isosurface Levels</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#opacity-settings">Opacity Settings</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#density-range-minmax">Density Range (Min/Max)</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="Section_NS_disk.md">Axisymmetric NS Disk</a>
                 </li>
               </ul>
       </div>
@@ -64,14 +50,14 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">Visualization Manual Draft</a>
+          <a href=".">Visualization Manual Draft</a>
         
       </nav>
       <div class="wy-nav-content">
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Axisymmetric NS Disk</li>
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Case Study: Axisymmetric Neutron Star with Disk</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -117,7 +103,7 @@ are also provided where applicable.</p>
 <p>The initial procedures should be familiar if the previous sections have been read. 
 We therefore proceed directly to the stage where raw isosurface plots are created 
 for both the disk and the neutron star, as shown in the figure below.</p>
-<p><img alt="Initial isosurface" src="../figures/Initial_Isosurface.jpeg" /></p>
+<p><img alt="Initial isosurface" src="figures/Initial_Isosurface.jpeg" /></p>
 <div style="text-align: center;">
 <p>Figure 1: Raw isosurface visualization of the axisymmetric neutron star–disk system.</p>
 </div>
@@ -167,13 +153,13 @@ SetView3D(View3DAtts)
 </code></pre>
 <p>A more detail explanation of the different parameters can be found on the official tutorial of Vislt: </p>
 <p>https://visit-sphinx-github-user-manual.readthedocs.io/en/develop/using_visit/MakingItPretty/View.html</p>
-<p><img alt="No annotations" src="../figures/view.png" /></p>
+<p><img src="figures/view.png" alt="Figure 2: View Setting." width="60%"></p>
 <div style="text-align: center;">
 <p>Figure 2: View Setting.</p>
 </div>
 
 <p>Now your plot should look something like this.</p>
-<p><img alt="No annotations" src="../figures/after_setup.png" /></p>
+<p><img alt="No annotations" src="figures/after_setup.png" /></p>
 <div style="text-align: center;">
 <p>Figure 3: Vislt after setup.</p>
 </div>
@@ -186,7 +172,7 @@ SetView3D(View3DAtts)
 <p>One of the most important parameters is the <strong>number of isosurface levels</strong>, which controls how many contour shells are rendered.</p>
 <p>In GUI, this can be done by </p>
 <p><strong>Isosurface operator attributes → Select by -- N level --</strong></p>
-<p><img alt="No annotations" src="../figures/iso.jpeg" /></p>
+<p><img alt="No annotations" src="figures/iso.jpeg" /></p>
 <div style="text-align: center;">
 <p>Figure 4: GUI Isosurface Level Setting.</p>
 </div>
@@ -208,7 +194,7 @@ Opacity controls how transparent the rendered surface is, and therefore determin
 For disk density, I used a <strong><em>Constant</em></strong> opacity around <code>11%</code>.</p>
 <h3 id="density-range-minmax">Density Range (Min/Max)</h3>
 <p>Finally, you might wanna play with <strong><em>min</em></strong> and <strong><em>max</em></strong> in <strong>Psudocolor</strong>.</p>
-<p><img alt="No annotations" src="../figures/pesudo.jpeg" /></p>
+<p><img alt="No annotations" src="figures/pesudo.jpeg" /></p>
 <div style="text-align: center;">
 <p>Figure 5: GUI Pseudocolor settings.</p>
 </div>
@@ -239,7 +225,7 @@ SetPlotOptions(PseudocolorAtts)
 </code></pre>
 <p>Note: the numbers and options I provided are just for references. The exact settings should be experimented with patience.</p>
 <p>Finally, your plot might look something similar to this.</p>
-<p><img alt="No annotations" src="../figures/visit0002.jpeg" /></p>
+<p><img alt="No annotations" src="figures/visit0002.jpeg" /></p>
 <div style="text-align: center;">
 <p>Figure 6: Raw density plot</p>
 </div>
@@ -270,11 +256,11 @@ SetPlotOptions(PseudocolorAtts)
     
   </span>
 </div>
-    <script src="../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "..";</script>
-    <script src="../js/theme_extra.js"></script>
-    <script src="../js/theme.js"></script>
-      <script src="../search/main.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
@@ -283,3 +269,8 @@ SetPlotOptions(PseudocolorAtts)
 
 </body>
 </html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-03-16 04:38:47.897103+00:00
+-->
